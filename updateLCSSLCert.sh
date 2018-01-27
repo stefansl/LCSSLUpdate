@@ -24,8 +24,8 @@ CONFIG_FILE=~/.lcsslupdaterc
 
 # Check, if vhosts exists
 if [ ! -f $LC_VHOSTS_PATH ];then
-    echo "Vhost $LC_VHOSTS_PATH doesn't exists. Please check your settings"
-    exit 1
+	echo "Vhost $LC_VHOSTS_PATH doesn't exists. Please check your settings"
+	exit 1
 fi
 
 get_vhost_value(){
