@@ -22,6 +22,12 @@ LC_VHOSTS_PATH="/etc/apache2/sites-available/kn1.conf"
 CONFIG_FILE=~/.lcsslupdaterc
 [ -f $CONFIG_FILE ] && command . $CONFIG_FILE
 
+# Check, if vhosts exists
+if [ ! -f $LC_VHOSTS_PATH ];then
+    echo "Vhost $LC_VHOSTS_PATH doesn't exists. Please check your settings"
+    exit 1
+fi
+
 get_vhost_value(){
 	awk -v domain=$LC_DOMAIN -v var=$1 '$1 == "ServerName" {extract=($2 == domain)} extract && $1 == var {print $2}' "$LC_VHOSTS_PATH"
 }
