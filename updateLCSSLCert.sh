@@ -18,6 +18,12 @@ LC_VHOSTS_PATH="/etc/apache2/sites-available/kn1.conf"
 ########	Do not modify after this line		#######
 ###############################################################
 
+# If user based config exists, load it
+CONFIG_FILE=~/.lcsslupdaterc
+if [ -f $CONFIG_FILE ]; then
+    command . $CONFIG_FILE;
+fi
+
 get_vhost_value(){
 	awk -v domain=$LC_DOMAIN -v var=$1 '$1 == "ServerName" {extract=($2 == domain)} extract && $1 == var {print $2}' "$LC_VHOSTS_PATH"
 }
