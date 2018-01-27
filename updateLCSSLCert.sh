@@ -57,7 +57,7 @@ setCertToLC(){
 	### Backup old cert / create new
 	###################
 
-	[ -f /etc/liveconfig/sslcert.pem ] mv /etc/liveconfig/sslcert.pem /etc/liveconfig/sslcert.pem.bak
+	[ -f /etc/liveconfig/sslcert.pem ] && mv /etc/liveconfig/sslcert.pem /etc/liveconfig/sslcert.pem.bak
 	mv /etc/liveconfig/newssl.pem /etc/liveconfig/sslcert.pem
 
 }
